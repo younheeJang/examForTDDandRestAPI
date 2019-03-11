@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="js/useFetch.js"></script>
+    <script>
+        //use window.onload : cause script running after all elements loaded: 
+        window.onload = () => {
+            const height50 = document.getElementsByClassName('height50')
+            for (let i = 0; i < height50.length; i++) {
+                height50[i].style.height = 50 + 'px'
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+
+
+
+    <div class="height50"></div>
+    <!-------------------------------------------------링크-->
+
+
+    <div class="container">
+        <h2>Links for help</h2>
+        <p>#http verbs, http status, fetch supports, introduction to fetch</p>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>conception</th>
+                    <th>links</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>http verbs</td>
+                    <td><a href="https://www.restapitutorial.com/httpstatuscodes.html">click here!</a></td>
+                </tr>
+                <tr>
+                    <td>http status</td>
+                    <td><a href="https://www.restapitutorial.com/httpstatuscodes.html">click here!</a></td>
+                </tr>
+                <tr>
+                    <td>fetch supports</td>
+                    <td><a href="https://developer.mozilla.org/ko/docs/Web/API/Fetch_API">click here!</a></td>
+                </tr>
+                <tr>
+                    <td>introdiction to fetch</td>
+                    <td><a href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch?hl=en">click here!</a></td>
+                </tr>
+                <tr>
+                    <td>test code:mocha/describe, it</td>
+                    <td><a href="https://mochajs.org/api/">click here!</a></td>
+                </tr>
+                <tr>
+                    <td>test code:chai/</td>
+                    <td><a href="https://www.chaijs.com/api/">click here!</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="height50"></div>
+
+
+
+
+    <!-------------------------------------------------api 설계-->
+    <div class="container">
+        <h2>api 설계</h2>
+        <p>about information verb, crud station, url etc on api.</p>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>verb/CRUD</th>
+                    <th>url</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>post/create</td>
+                    <td>/courses</td>
+                </tr>
+                <tr>
+                    <td>get/readOne</td>
+                    <td>/courses?coursename=</td>
+                </tr>
+                <tr>
+                    <td>get/readAll</td>
+                    <td>/courses</td>
+                </tr>
+                <tr>
+                    <td>put/update</td>
+                    <td>/courses</td>
+                </tr>
+                <tr>
+                    <td>delete/delete</td>
+                    <td>/courses</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="height50"></div>
+
+
+    <!-------------------------------------------------------화면-->
+
+
+    <div class="container">
+        <h2>기능 확인</h2>
+        <p>check if your code done well on browser or not</p>
+
+        <div class="card-deck">
+            <div class="card bg-light mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">http verbs:post</h5>
+                    <p class="card-text">insert db new information.</p>
+                    <form method="POST" action="/courses">
+                        <div class="form-group">
+                            <input type="text" name="course_name" class="form-control" placeholder="course name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="course_price" class="form-control" placeholder="course price">
+                        </div>
+                        <button type="submit" class="btn btn-primary">create</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card bg-light mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">http verbs:getAll</h5>
+                    <p class="card-text">get all list information.</p>
+                    <form action="/courses" method="get">
+                        <button type="submit" class="btn btn-primary">read all</button></form>
+                </div>
+            </div>
+
+            <div class="card bg-light mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">http verbs:getOne</h5>
+                    <p class="card-text">get one information.</p>
+                    <form action="/courses" method="GET">
+                        <div class="form-group">
+                            <input type="text" name="coursename" class="form-control" placeholder="course name">
+                        </div>
+                        <button type="submit" class="btn btn-primary">read one</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card bg-light mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">http verbs:update</h5>
+                    <p class="card-text">update or modify</p>
+                    <input type="hidden" name="_method" value="PUT">
+                    <div class="form-group">
+                        <input type="text" name="course_name" class="form-control" id="course1" placeholder="course name">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="course_price" class="form-control" id="price1" placeholder="course price">
+                    </div>
+                    <button onclick="updateCourse()" class="btn btn-primary" id="submit">update</button>
+                </div>
+            </div>
+
+            <div class="card bg-light mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">http verbs:delete</h5>
+                    <p class="card-text">delete</p>
+                    <input type="hidden" name="_method" value="delete">
+                    <div class="form-group">
+                        <input type="text" name="course_name" class="form-control" id="course2" placeholder="course name">
+                    </div>
+                    <button onclick="deleteCourse()" class="btn btn-primary" id="submit">delete</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="height50"></div>
+</body>
+
+</html>
